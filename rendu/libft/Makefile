@@ -14,7 +14,7 @@ NAME = libft.a
 
 FLAG = -Wall -Werror -Wextra
 
-SRCS = ft_atoi.c ft_strcmp.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c ft_lstlast.c
+SRCS = ft_putchar.c ft_putstr.c ft_atoi.c ft_strcmp.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c ft_lstlast.c
 
 OBJET = $(SRCS:.c=.o)
 

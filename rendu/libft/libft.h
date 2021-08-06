@@ -27,6 +27,8 @@ typedef struct	s_list
 	int		rank;
 	struct s_list	*next;
 }				t_list;
+void		ft_putchar(char c);
+void		ft_putstr(const char *str);
 int		ft_atoi(const char *str);
 int		ft_strcmp(char *str0, char *str1);
 t_list		*ft_lstnew(int content);

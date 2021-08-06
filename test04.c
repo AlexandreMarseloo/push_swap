@@ -1,5 +1,6 @@
 #include "push_swap.h"
 #include <stdio.h>
+#include <unistd.h>
 
 t_stack	*init_stack()
 {
@@ -98,15 +99,55 @@ void	printstacks(t_stack *a, t_stack *b)
 	printf("---------------\n| A |     | B |\n");
 }
 
+int	ft_is_sorted(t_stack *a, t_stack *b)
+{
+	int	res;
+	int	val;
+	t_list	*tmp;
+
+	if (a->first == NULL || a->first->next == NULL)
+	{
+		if (b->first == NULL)
+			return (1);
+		return (0);
+	}
+	res = 1;
+	tmp = a->first;
+	val = tmp->content;
+	tmp = tmp->next;
+	while (tmp->next != NULL)
+	{
+		if (val > tmp->content)
+			res = 0;
+		val = tmp->content;
+		tmp = tmp->next;
+	}
+	if (val > tmp->content)
+		return (0);
+	if (b->first == NULL && res == 1)
+		return (1);
+	return(0);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	*str;
+	int	ret;
 
+	str = malloc(sizeof(char) * 10);
 	a = init_stack();
 	b = init_stack();
 	a->first = parse_arg(ac, av);
-	ft_rotate(a);
-	printstacks(a, b);
+	while (ft_is_sorted(a, b) != 1)
+	{
+		printstacks(a, b);
+		ret = read(0, str, 10);
+		if (ret == -1)
+			return (0);
+		if (ft_strcmp(str, "sa") == 0)
+			ft_push(a, b);
+	}
 	return (0);
 }
