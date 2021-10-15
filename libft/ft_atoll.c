@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarsel <almarsel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+long long	ft_atoll(const char *str)
 {
-	int						i;
-	unsigned long long int	res;
-	int						signe;
+	int		i;
+	long long	res;
+	int		signe;
 
 	res = 0;
 	i = 0;
@@ -35,5 +35,5 @@ int		ft_atoi(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	return ((int)(signe * res));
+	return (signe * res);
 }
